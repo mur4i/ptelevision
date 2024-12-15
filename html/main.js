@@ -121,7 +121,7 @@ function ShowNotification(channel, data) {
     setTimeout(function() {
         $("#tv-container").removeClass("notify")
         $("#tv-container div").removeClass("notify")
-        $("#tv-container div").html("NO SIGNAL")
+        $("#tv-container div").html("USE /TV")
         if (!display) {
             $('#tv-container').hide()
         }

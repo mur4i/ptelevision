@@ -21,7 +21,7 @@ function GetChannelList()
     end
     for index,value in pairs(Channels) do 
         table.insert(channel_list, {index = index, url = value.url})
-        table.insert(menu_list, "Channel #" .. index .. " (".. value.name ..")")
+        table.insert(menu_list, "Canal #" .. index .. " (".. value.name ..")")
         if channel ~= nil and channel == index then 
             current = #channel_list
         end
@@ -72,7 +72,7 @@ end
 
 function VolumeMenu()
     lib.hideMenu()
-    local input = lib.inputDialog('Volume', {'Set Volume (0-100):'})
+    local input = lib.inputDialog('Volume', {'Volume (0-100):'})
     if (tonumber(input[1])) then 
         local coords = CURRENT_SCREEN.coords
         SetVolume(coords, tonumber(input[1])/100)
@@ -88,7 +88,7 @@ function OpenTVMenu()
     local ChannelList = GetChannelList()
     lib.registerMenu({
         id = 'ptelevision-menu',
-        title = 'Television',
+        title = 'Televisão',
         position = 'top-right',
         onSideScroll = function(selected, scrollIndex, args)
             if (selected == 3) then 
@@ -100,12 +100,12 @@ function OpenTVMenu()
         onClose = function(keyPressed)
         end,
         options = {
-            {label = 'Videos', description = 'Play a video or stream on the screen.'},
-            {label = 'Web Browser', description = 'Access the web via your TV.'},
-            {label = 'TV Channels', values = ChannelList.display, description = 'Live TV Channels in San Andreas!', defaultIndex = ChannelList.current},
-            {label = 'Interact With Screen', description = 'Allows you to control on-screen elements.'},
-            {label = 'Set Volume', description = 'Sets your TV\'s volume (For yourself).'},
-            {label = 'Close Menu', close = true},
+            {label = 'Vídeos', description = 'Reproduza um vídeo ou stream na tela.'},
+            {label = 'Navegador Web', description = 'Acesse a web através da sua TV.'},
+            {label = 'Canais de TV', values = ChannelList.display, description = 'Canais de TV ao vivo em San Andreas!', defaultIndex = ChannelList.current},
+            {label = 'Interagir com a Tela', description = 'Permite controlar os elementos na tela.'},
+            {label = 'Ajustar Volume', description = 'Define o volume da sua TV (Para você).'},
+            {label = 'Fechar Menu', close = true},            
         }
     }, function(selected, scrollIndex, args)
         if (selected == 1) then
